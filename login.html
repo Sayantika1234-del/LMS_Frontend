@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: aliceblue;
+        }
+
+        .full-screen-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .maroon-theme {
+            color: #800000;
+        }
+
+        .btn-custom {
+            background-color: #a0522d;
+            color: black;
+        }
+
+        .btn-custom:hover {
+            background-color: #800000;
+        }
+
+        .login-container {
+            background: url('loginimg.jpg') no-repeat center center/cover;
+        }
+
+        .login-card {
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: black;
+        }
+
+        .crossword-section {
+            background: url('bg.jpg') no-repeat center center/cover;
+            text-align: center;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 250, 240, 0.9);
+        }
+
+        .module-container {
+            background: url('books-tracker-library-bg.jpg') no-repeat center center/cover;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Section -->
+    <div class="login-container full-screen-section">
+        <div class="card login-card">
+            <h3 class="text-center maroon-theme">Library Login</h3>
+            <div class="mb-3">
+                <button class="btn btn-custom w-100 mb-2" id="user-tab">Login as User</button>
+                <button class="btn btn-custom w-100" id="librarian-tab">Login as Librarian</button>
+            </div>
+            <!-- User Login Form -->
+            <form action="user-login.html" id="user-form" class="hidden">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-custom w-100">Login</button>
+            </form>
+            <!-- Librarian Login Form -->
+            <form action="librarian-login.html" id="librarian-form" class="hidden">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-custom w-100">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Crossword Section -->
+    <div class="crossword-section full-screen-section">
+        <div>
+            <h1>Crossword</h1>
+            <p>Welcome to the Library Management System! Explore books, manage library tasks, and more.</p>
+        </div>
+    </div>
+
+    <!-- Dynamic Module Section -->
+    <div class="module-container full-screen-section" id="books-tracker-module" class="hidden">
+        <div>
+            <h2>Books Tracker Module</h2>
+            <button class="btn btn-custom mb-2">Search for Books</button>
+            <button class="btn btn-custom mb-2">View Book Details</button>
+            <button class="btn btn-custom">Reserve or Renew Books</button>
+        </div>
+    </div>
+
+    <div class="module-container full-screen-section hidden" id="librarian-module">
+        <div>
+            <h2>Librarian Module</h2>
+            <button class="btn btn-custom mb-2">Manage Books</button>
+            <button class="btn btn-custom mb-2">User Accounts</button>
+            <button class="btn btn-custom">Monitor Transactions</button>
+        </div>
+    </div>
+
+    <script>
+        // Get references to the tabs, forms, and modules
+        const userTab = document.getElementById('user-tab');
+        const librarianTab = document.getElementById('librarian-tab');
+        const userForm = document.getElementById('user-form');
+        const librarianForm = document.getElementById('librarian-form');
+        const booksTrackerModule = document.getElementById('books-tracker-module');
+        const librarianModule = document.getElementById('librarian-module');
+
+        // Add event listeners for the tabs
+        userTab.addEventListener('click', () => {
+            userForm.classList.remove('hidden');
+            librarianForm.classList.add('hidden');
+            booksTrackerModule.classList.remove('hidden');
+            librarianModule.classList.add('hidden');
+        });
+
+        librarianTab.addEventListener('click', () => {
+            librarianForm.classList.remove('hidden');
+            userForm.classList.add('hidden');
+            librarianModule.classList.remove('hidden');
+            booksTrackerModule.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
